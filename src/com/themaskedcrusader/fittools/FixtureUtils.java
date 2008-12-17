@@ -6,35 +6,36 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class FixtureUtils {
-    private Map global = new HashMap();
-    private int count = 0;
-    private static FixtureUtils thisInstance = new FixtureUtils();
+  private Map global = new HashMap();
+  private int count = 0;
+  private static FixtureUtils thisInstance = new FixtureUtils();
 
-    private FixtureUtils(){
-        // empty constructor for singlet
-    }
+  private FixtureUtils() {
+    // empty constructor for singlet
+  }
 
-    public static FixtureUtils getInstance(){
-        return thisInstance;
-    }
+  public static FixtureUtils getInstance() {
+    return thisInstance;
+  }
 
-    public String getGlobal(String key) {
-        return (String) global.get(key);
-    }
+  public String getGlobal(String key) {
+    return (String)global.get(key);
+  }
 
-    public void setGlobal(String key, String value) {
-        this.global.put(key,value);
-    }
+  public void setGlobal(String key, String value) {
+    this.global.put(key, value);
+  }
 
-    private int countUp() {
-        count++;
-        if (count == 10) count = 0; 
-        return count;
-    }
+  private int countUp() {
+    count++;
+    if (count == 10)
+      count = 0;
+    return count;
+  }
 
-    public String generateUnique() {
-        Date d = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssS");
-        return sdf.format(d) + countUp();
-    }
+  public String generateUnique() {
+    Date d = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssS");
+    return sdf.format(d) + countUp();
+  }
 }

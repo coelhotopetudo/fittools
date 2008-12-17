@@ -86,6 +86,7 @@
          <hash n="Default">
             <value n="custom" v="false"/>
             <value n="name" v="Default"/>
+            <url n="targetURL" path="src/com/themaskedcrusader/fittools/junit/BrowserFixtureTest.java"/>
          </hash>
       </hash>
       <list n="runConfigurationList">

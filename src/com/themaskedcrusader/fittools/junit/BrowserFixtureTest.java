@@ -5,9 +5,9 @@ import junit.framework.TestCase;
 
 public class BrowserFixtureTest extends TestCase {
 
-    public void testBrowserFixture() {
-        BrowserFixture bf = new BrowserFixture();
-//        bf.start();
-    }
+  public void testBrowserFixture() {
+    BrowserFixture bf = new BrowserFixture();
+//    bf.start();
+  }
 
 }
