@@ -24,7 +24,6 @@ import com.thoughtworks.selenium.*;
 
 public class BrowserFixture extends BaseDoFixture {
   CommandProcessor cp;
-  Selenium sel = null;
   boolean started = false;
 
   public BrowserFixture() { /* empty constructor */
@@ -39,12 +38,31 @@ public class BrowserFixture extends BaseDoFixture {
     cp.start();
   }
 
+  public void doCommand(String s1) {
+    doCommandWithTarget(s1, null);
+  }
+
   public void doCommandWithTarget(String s1, String s2) {
+    doCommandWithTargetAndValue(s1, s2, null);
+  }
+
+  public void doCommandWithTargetAndValue(String s1, String s2, String s3) {
     if (!started) {
       startBrowser(); // start the browser if it isn't started already.
       started = true;
     }
-
   }
-
+  
+  /* Needed Fixures:
+   * 
+   * storeTextFromTargetInGlobal
+   *   | store text from target | xpath:\\HTML | in global | myGlobal |
+   * storeValueFromTargetInGlobal
+   *   | store value from target | \\input[@name='my button'] | in global | myGlobal |
+   * storeAttributeFromTargetInGlobal
+   *   | store attribute from target | form[0].myTarget | in global | myGlobal |
+   * pauseForSeconds
+   *   | pause for | 8 | seconds |
+   * 
+   */
 }

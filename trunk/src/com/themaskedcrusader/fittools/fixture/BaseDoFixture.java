@@ -20,11 +20,11 @@
 
 package com.themaskedcrusader.fittools.fixture;
 
-import com.themaskedcrusader.fittools.FixtureUtils;
+import com.themaskedcrusader.fittools.FitToolsUtils;
 import fitlibrary.DoFixture;
 
 public class BaseDoFixture extends DoFixture {
-  protected FixtureUtils utils = FixtureUtils.getInstance(); // for utils variables
+  protected FitToolsUtils utils = FitToolsUtils.getInstance(); // for utils variables
 
   public String parse(String toParse) {
     String[] tokens = toParse.split(" ");
@@ -37,6 +37,14 @@ public class BaseDoFixture extends DoFixture {
       }
     }
     return toReturn.trim();
+  }
+  
+  public void printGplWarranty(){
+    System.out.println("add gpl warranty here!");
+  }
+  
+  public void printRedistributionConditions() {
+    System.out.println("add redistibution conditions here");
   }
 
 }
