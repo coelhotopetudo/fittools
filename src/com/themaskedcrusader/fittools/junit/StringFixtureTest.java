@@ -22,11 +22,11 @@ package com.themaskedcrusader.fittools.junit;
 
 import junit.framework.TestCase;
 import com.themaskedcrusader.fittools.fixture.StringFixture;
-import com.themaskedcrusader.fittools.FixtureUtils;
+import com.themaskedcrusader.fittools.FitToolsUtils;
 
 public class StringFixtureTest extends TestCase {
   StringFixture sf = new StringFixture();
-  FixtureUtils utils = FixtureUtils.getInstance();
+  FitToolsUtils utils = FitToolsUtils.getInstance();
 
   String testGlobal1 = "testGlobal1";
   String testGlobal2 = "textGlobal2";

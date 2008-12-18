@@ -25,16 +25,32 @@ import java.util.HashMap;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class FixtureUtils {
+public class FitToolsUtils {
   private Map global = new HashMap();
   private int count = 0;
-  private static FixtureUtils thisInstance = new FixtureUtils();
+  private static FitToolsUtils thisInstance = new FitToolsUtils();
 
-  private FixtureUtils() {
-    // empty constructor for singlet
+  private FitToolsUtils() {
+    System.out.println("" + 
+    
+      "----- GPL License Notice: ------------------------------------------\n" +
+      "FitTools version 0.1, Copyright (C) 2008 Christopher Schalk  \n" +
+      "FitTools comes with ABSOLUTELY NO WARRANTY; for details      \n" +
+      "add the following code to a fitnesse test page and execute:  \n\n" +
+      "!| com.themaskedcrusader.fittools.fixture.BaseDoFixture |\n" +
+      "| print gpl warranty |\n\n" +
+      "FitTools is free software, and you are welcome to redistribute\n" +
+      "it under certain conditions; add the following code to a \n" +
+      "fitnesse test page and execute for details on condititions:\n\n" +
+      "!| com.themaskedcrusader.fittools.fixture.BaseDoFixture |\n" + 
+      "| print redistribution conditions |\n\n" +
+      "--------------------------------------------------------------------\n"
+      
+      
+      );
   }
 
-  public static FixtureUtils getInstance() {
+  public static FitToolsUtils getInstance() {
     return thisInstance;
   }
 
