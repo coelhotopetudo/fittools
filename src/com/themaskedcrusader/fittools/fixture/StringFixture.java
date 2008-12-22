@@ -1,5 +1,5 @@
 /* FitTools: FitNesse Plugin for Automation of Web Applications
- * Copyright (C) 2008, Christopher Schalk (www.themaskedcrusader.com
+ * Copyright (C) 2008, Christopher Schalk (www.themaskedcrusader.com)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -262,12 +262,12 @@ public class StringFixture extends BaseDoFixture {
   }
   
   /**
-   * Used to add a suffix to the end of a stored global.<b>Usage</b>
+   * Used to add a suffix to the end of a stored global. <b>Usage:</b>
    * <pre>
    * | add suffix | lastname | to global | myGlobal |
    * </pre>
-   * @param suffix
-   * @param global
+   * @param suffix - String of characters to add to the global
+   * @param global - global to add characters to
    */
   public void addSuffixToGlobal(String suffix, String global) {
     suffix = parse(suffix);
