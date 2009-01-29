@@ -1,5 +1,5 @@
 /* FitTools: FitNesse Plugin for Automation of Web Applications
- * Copyright (C) 2008, Christopher Schalk (www.themaskedcrusader.com)
+ * Copyright (C) 2009, Christopher Schalk (www.themaskedcrusader.com)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -31,20 +31,38 @@ public class BaseDoFixture extends DoFixture {
     String toReturn = "";
     for (String token: tokens) {
       if (token.indexOf("#[") > -1 && token.indexOf("]") > -1) {
-        toReturn += utils.getGlobal(token) + " ";
+        toReturn += utils.getGlobal(token.substring(1, token.length() - 1)) + " ";
       } else {
         toReturn += token + " ";
       }
     }
     return toReturn.trim();
   }
-  
-  public void printGplWarranty(){
-    System.out.println("add gpl warranty here!");
+
+  public boolean printGplWarranty() {
+    System.out.println("" + 
+                       " ----- GPL Warranty Notice: ------------------------------------------\n " + 
+                       " FitTools: FitNesse Plugin for Automation of Web Applications\n" + 
+                       " Copyright (C) 2009, Christopher Schalk (www.themaskedcrusader.com)\n\n" + 
+                       " This program is free software; you can redistribute it and/or\n" + 
+                       " modify it under the terms of the GNU General Public License\n" + 
+                       " as published by the Free Software Foundation; either version 2\n" + 
+                       " of the License, or (at your option) any later version.\n" + " \n" + 
+                       " This program is distributed in the hope that it will be useful,\n" + 
+                       " but WITHOUT ANY WARRANTY; without even the implied warranty of\n" + 
+                       " MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n" + 
+                       " GNU General Public License for more details.\n" + " \n" + 
+                       " You should have received a copy of the GNU General Public License\n" + 
+                       " along with this program; if not, write to the Free Software\n" + 
+                       " Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n\n" + 
+                       " Contact the author via email at: christopher.schalk@gmail.com\n" + 
+                       "--------------------------------------------------------------------");
+    return true;
   }
-  
-  public void printRedistributionConditions() {
-    System.out.println("add redistibution conditions here");
+
+  public boolean printRedistributionConditions() {
+    System.out.println("REDISTRIBUTION CONDITIONS NOT AVAILABLE");
+    return false;
   }
 
 }

@@ -1,5 +1,5 @@
 /* FitTools: FitNesse Plugin for Automation of Web Applications
- * Copyright (C) 2008, Christopher Schalk (www.themaskedcrusader.com)
+ * Copyright (C) 2009, Christopher Schalk (www.themaskedcrusader.com)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,38 +23,55 @@ package com.themaskedcrusader.fittools.fixture;
 import com.thoughtworks.selenium.*;
 
 public class BrowserFixture extends BaseDoFixture {
-  CommandProcessor cp;
-  boolean started = false;
 
-  public BrowserFixture() { /* empty constructor */
+  public BrowserFixture() {
   }
 
-  public void startBrowser() {
-    String selHost = args[0];
-    int selPort = Integer.parseInt(args[1]);
-    String baseUrl = args[2];
-    String browser = args[3];
-    cp = new HttpCommandProcessor(selHost, selPort, browser, baseUrl);
-    cp.start();
+  public void startBrowserOnHostWithBaseUrl(String browser, String host, String baseUrl) {
+    String[] seleniumHost = host.split(":");
+    String selHost = seleniumHost[0];
+    int selPort = Integer.parseInt(seleniumHost[1]);
+    System.out.println("Selenium Host: " + selHost);
+    System.out.println("Selenium Port: " + selPort);
+    System.out.println("Browser Type : " + browser);
+    if (!utils.isStarted()) {
+      try {
+        utils.cp = new HttpCommandProcessor(selHost, selPort, browser, baseUrl);
+        utils.cp.start();
+        utils.setStarted(true);
+      } catch (Exception e) {
+        if (e.getMessage().indexOf("Connection refused: connect") != -1) {
+          throw new RuntimeException("Could not contact Selenium Server; have you started it?\n" + 
+                                     e.getMessage());
+        }
+      }
+    }
   }
 
   public void doCommand(String s1) {
-    doCommandWithTarget(s1, null);
+    if (utils.isStarted())
+      utils.cp.doCommand(s1, new String[] {});
   }
 
   public void doCommandWithTarget(String s1, String s2) {
-    doCommandWithTargetAndValue(s1, s2, null);
+    if (utils.isStarted())
+      utils.cp.doCommand(s1, new String[] { s2, });
   }
 
   public void doCommandWithTargetAndValue(String s1, String s2, String s3) {
-    if (!started) {
-      startBrowser(); // start the browser if it isn't started already.
-      started = true;
+    if (utils.isStarted())
+      utils.cp.doCommand(s1, new String[] { s2, s3, });
+  }
+
+  public void stopSelenium() {
+    if (utils.isStarted()) {
+      utils.cp.stop();
+      utils.setStarted(false);
     }
   }
-  
+
   /* Needed Fixures:
-   * 
+   *
    * storeTextFromTargetInGlobal
    *   | store text from target | xpath:\\HTML | in global | myGlobal |
    * storeValueFromTargetInGlobal
@@ -63,6 +80,6 @@ public class BrowserFixture extends BaseDoFixture {
    *   | store attribute from target | form[0].myTarget | in global | myGlobal |
    * pauseForSeconds
    *   | pause for | 8 | seconds |
-   * 
+   *
    */
 }
