@@ -49,6 +49,16 @@
          </list>
       </hash>
    </hash>
+   <hash n="oracle.jdeveloper.compiler.ant.AntConfiguration">
+      <value n="makeTarget" v="jar"/>
+      <url n="projectBuildfile" path="build.xml"/>
+      <list n="targetList">
+         <string v="clean"/>
+         <string v="compile"/>
+         <string v="jar"/>
+         <string v="init"/>
+      </list>
+   </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
       <value n="internalEncoding" v="Cp1252"/>
    </hash>
@@ -96,15 +106,7 @@
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">
          <hash>
-            <value n="id" v="Selenium-java-client-driver-sources.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Selenium-java-client-driver.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Junit-4.5.jar"/>
+            <value n="id" v="Fitlibrary.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -112,7 +114,15 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Fitlibrary.jar"/>
+            <value n="id" v="Junit-4.5.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Selenium-java-client-driver-sources.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Selenium-java-client-driver.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -120,34 +130,16 @@
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url path="../lib/Selenium/selenium-java-client-driver-sources.jar" jar-entry=""/>
+                  <url path="lib/fitlibrary.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Selenium-java-client-driver-sources.jar"/>
-               <value n="id" v="Selenium-java-client-driver-sources.jar"/>
+               <value n="description" v="Fitlibrary.jar"/>
+               <value n="id" v="Fitlibrary.jar"/>
                <value n="locked" v="true"/>
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../lib/Selenium/selenium-java-client-driver.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Selenium-java-client-driver.jar"/>
-               <value n="id" v="Selenium-java-client-driver.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../lib/JUnit/junit-4.5.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Junit-4.5.jar"/>
-               <value n="id" v="Junit-4.5.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../lib/FitNesse/fitnesse.jar" jar-entry=""/>
+                  <url path="lib/fitnesse.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Fitnesse.jar"/>
@@ -156,26 +148,36 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../lib/FitNesse/fitlibrary.jar" jar-entry=""/>
+                  <url path="lib/junit-4.5.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Fitlibrary.jar"/>
-               <value n="id" v="Fitlibrary.jar"/>
+               <value n="description" v="Junit-4.5.jar"/>
+               <value n="id" v="Junit-4.5.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="lib/selenium-java-client-driver-sources.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Selenium-java-client-driver-sources.jar"/>
+               <value n="id" v="Selenium-java-client-driver-sources.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="lib/selenium-java-client-driver.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Selenium-java-client-driver.jar"/>
+               <value n="id" v="Selenium-java-client-driver.jar"/>
                <value n="locked" v="true"/>
             </hash>
          </list>
       </hash>
       <list n="libraryReferences">
          <hash>
-            <value n="id" v="Selenium-java-client-driver-sources.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Selenium-java-client-driver.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Junit-4.5.jar"/>
+            <value n="id" v="Fitlibrary.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -183,7 +185,15 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Fitlibrary.jar"/>
+            <value n="id" v="Junit-4.5.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Selenium-java-client-driver-sources.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Selenium-java-client-driver.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
