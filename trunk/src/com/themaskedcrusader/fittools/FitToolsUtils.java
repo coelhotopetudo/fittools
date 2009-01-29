@@ -1,5 +1,5 @@
 /* FitTools: FitNesse Plugin for Automation of Web Applications
- * Copyright (C) 2008, Christopher Schalk (www.themaskedcrusader.com)
+ * Copyright (C) 2009, Christopher Schalk (www.themaskedcrusader.com)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,34 +20,32 @@
 
 package com.themaskedcrusader.fittools;
 
+import com.thoughtworks.selenium.CommandProcessor;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class FitToolsUtils {
+  public static CommandProcessor cp;
+  private boolean started;
   private Map global = new HashMap();
   private int count = 0;
   private static FitToolsUtils thisInstance = new FitToolsUtils();
 
   private FitToolsUtils() {
-    System.out.println("" + 
-    
-      "----- GPL License Notice: ------------------------------------------\n" +
-      "FitTools version 0.1, Copyright (C) 2008 Christopher Schalk  \n" +
-      "FitTools comes with ABSOLUTELY NO WARRANTY; for details      \n" +
-      "add the following code to a fitnesse test page and execute:  \n\n" +
-      "!| com.themaskedcrusader.fittools.fixture.BaseDoFixture |\n" +
-      "| print gpl warranty |\n\n" +
-      "FitTools is free software, and you are welcome to redistribute\n" +
-      "it under certain conditions; add the following code to a \n" +
-      "fitnesse test page and execute for details on condititions:\n\n" +
-      "!| com.themaskedcrusader.fittools.fixture.BaseDoFixture |\n" + 
-      "| print redistribution conditions |\n\n" +
-      "--------------------------------------------------------------------\n"
-      
-      
-      );
+    System.out.println("----- GPL License Notice: ------------------------------------------\n" + 
+                       "FitTools version 0.1, Copyright (C) 2009 Christopher Schalk  \n" + 
+                       "FitTools comes with ABSOLUTELY NO WARRANTY; for details      \n" + 
+                       "add the following code to a fitnesse test page and execute:  \n\n" + 
+                       "!| com.themaskedcrusader.fittools.fixture.BaseDoFixture |\n" + 
+                       "| print gpl warranty |\n\n" + 
+                       "FitTools is free software, and you are welcome to redistribute\n" + 
+                       "it under certain conditions; add the following code to a \n" + 
+                       "fitnesse test page and execute for details on condititions:\n\n" + 
+                       "!| com.themaskedcrusader.fittools.fixture.BaseDoFixture |\n" + 
+                       "| print redistribution conditions |\n\n" + 
+                       "--------------------------------------------------------------------\n");
   }
 
   public static FitToolsUtils getInstance() {
@@ -73,5 +71,13 @@ public class FitToolsUtils {
     Date d = new Date();
     SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssS");
     return sdf.format(d) + countUp();
+  }
+
+  public void setStarted(boolean started) {
+    this.started = started;
+  }
+
+  public boolean isStarted() {
+    return started;
   }
 }

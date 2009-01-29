@@ -1,5 +1,5 @@
 /* FitTools: FitNesse Plugin for Automation of Web Applications
- * Copyright (C) 2008, Christopher Schalk (www.themaskedcrusader.com)
+ * Copyright (C) 2009, Christopher Schalk (www.themaskedcrusader.com)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

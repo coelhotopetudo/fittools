@@ -18,14 +18,29 @@
  * Contact the author via email at: christopher.schalk@gmail.com
  */
  
- Installation:
+ /**
+ * parse pasted fittools code into selenium IDE code
+ * function parse(testCase, source) {  // IMPLEMENT LATER // }
+ */
+
+function format(testCase, name) {
+  return formatCommands(testCase.commands);
+}
+
+function formatCommands(commands) {
+  var commandText = "";
+  commandText = commandText +  "!| com.themaskedcrusader.fittools.fixture.BrowserFixture |\n";
+  commandText = commandText +  "| start browser | ${BROWSER} | on host | ${SEL_HOST}:${SEL_PORT} |\n";
+
+  for (var i = 0; i < commands.length; i++) {
+    commandText = commandText + "| doCommand | " +  commands[i].command + " |";
+    if (commands[i].target != '')
+      commandText = commandText + " with target | " + commands[i].target + " |";
+    if (commands[i].value != '')
+      commandText = commandText + " and value | " + commands[i].value + " |";
+    commandText = commandText + "\n";
+  }
  
- FitTools was built for FitNesse 20081201, but should work with earlier versions.
- 
- To Install FitTools:
- 
- 1. Copy FitTools.jar to your FitNesse directory (with fitlibrary.jar and fitnesse.jar)
- 2. Within Fitnesse, edit the root directives (http://fitnesseserver/root?edit)
- 3. Add the following on a new line "!path FitTools.jar"
- 
- 
+
+  return commandText; 
+}
