@@ -27,16 +27,17 @@ public class BrowserFixture extends BaseDoFixture {
   public BrowserFixture() {
   }
 
-  public void startBrowserOnHostWithBaseUrl(String browser, String host, String baseUrl) {
-    String[] seleniumHost = host.split(":");
-    String selHost = seleniumHost[0];
-    int selPort = Integer.parseInt(seleniumHost[1]);
+  public void startBrowser() {
+    String selHost = args[0];
+    int selPort = Integer.parseInt(args[1]);
+    String baseURL = args[2];
+    String browser = args[3];
     System.out.println("Selenium Host: " + selHost);
     System.out.println("Selenium Port: " + selPort);
     System.out.println("Browser Type : " + browser);
     if (!utils.isStarted()) {
       try {
-        utils.cp = new HttpCommandProcessor(selHost, selPort, browser, baseUrl);
+        utils.cp = new HttpCommandProcessor(selHost, selPort, browser, baseURL);
         utils.cp.start();
         utils.setStarted(true);
       } catch (Exception e) {
@@ -49,16 +50,23 @@ public class BrowserFixture extends BaseDoFixture {
   }
 
   public void doCommand(String s1) {
+    if (!utils.isStarted())
+      startBrowser();
     if (utils.isStarted())
-      utils.cp.doCommand(s1, new String[] {});
+      utils.cp.doCommand(s1, new String[] {});      
+      
   }
 
   public void doCommandWithTarget(String s1, String s2) {
+    if (!utils.isStarted())
+      startBrowser();
     if (utils.isStarted())
       utils.cp.doCommand(s1, new String[] { s2, });
   }
 
   public void doCommandWithTargetAndValue(String s1, String s2, String s3) {
+    if (!utils.isStarted())
+      startBrowser();
     if (utils.isStarted())
       utils.cp.doCommand(s1, new String[] { s2, s3, });
   }
@@ -69,6 +77,10 @@ public class BrowserFixture extends BaseDoFixture {
       utils.setStarted(false);
     }
   }
+  
+  public void pauseSeconds(int seconds) throws Exception {
+    Thread.sleep(seconds * 1000);
+  }
 
   /* Needed Fixures:
    *
@@ -78,8 +90,6 @@ public class BrowserFixture extends BaseDoFixture {
    *   | store value from target | \\input[@name='my button'] | in global | myGlobal |
    * storeAttributeFromTargetInGlobal
    *   | store attribute from target | form[0].myTarget | in global | myGlobal |
-   * pauseForSeconds
-   *   | pause for | 8 | seconds |
    *
    */
 }
