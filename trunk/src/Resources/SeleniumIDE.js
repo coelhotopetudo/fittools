@@ -29,8 +29,8 @@ function format(testCase, name) {
 
 function formatCommands(commands) {
   var commandText = "";
-  commandText = commandText +  "!| com.themaskedcrusader.fittools.fixture.BrowserFixture |\n";
-  commandText = commandText +  "| start browser | ${BROWSER} | on host | ${SEL_HOST}:${SEL_PORT} |\n";
+  commandText = commandText +  "!| com.themaskedcrusader.fittools.fixture.BrowserFixture |";
+  commandText = commandText +  " ${SEL_HOST} | ${SEL_PORT} | ${BASEURL} | ${BROWSER} |\n";
 
   for (var i = 0; i < commands.length; i++) {
     commandText = commandText + "| doCommand | " +  commands[i].command + " |";
