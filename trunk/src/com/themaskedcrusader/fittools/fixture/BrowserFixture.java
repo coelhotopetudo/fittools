@@ -50,25 +50,25 @@ public class BrowserFixture extends BaseDoFixture {
   }
 
   public void doCommand(String s1) {
-    if (!utils.isStarted())
-      startBrowser();
-    if (utils.isStarted())
-      utils.cp.doCommand(s1, new String[] {});      
-      
+    doCommandWithTarget(s1, null);
   }
 
   public void doCommandWithTarget(String s1, String s2) {
-    if (!utils.isStarted())
-      startBrowser();
-    if (utils.isStarted())
-      utils.cp.doCommand(s1, new String[] { s2, });
+    doCommandWithTargetAndValue(s1, s2, null);
   }
 
   public void doCommandWithTargetAndValue(String s1, String s2, String s3) {
     if (!utils.isStarted())
       startBrowser();
-    if (utils.isStarted())
-      utils.cp.doCommand(s1, new String[] { s2, s3, });
+    if (utils.isStarted()) {
+      if (s2 == null) {
+        utils.cp.doCommand(s1, new String[] { });
+      } else if (s3 == null) {
+        utils.cp.doCommand(s1, new String[] { s2, });
+      } else {
+        utils.cp.doCommand(s1, new String[] { s2, s3, });
+      }
+    }
   }
 
   public void stopSelenium() {
@@ -77,9 +77,36 @@ public class BrowserFixture extends BaseDoFixture {
       utils.setStarted(false);
     }
   }
-  
+
   public void pauseSeconds(int seconds) throws Exception {
     Thread.sleep(seconds * 1000);
+  }
+
+  public boolean verify(String s1) {
+    return verifyWithTarget(s1, null);
+  }
+
+  public boolean verifyWithTarget(String s1, String s2) {
+    return verifyWithTargetAndValue(s1, s2, null);
+  }
+
+  public boolean verifyWithTargetAndValue(String s1, String s2, String s3) {
+    if (utils.isStarted()) {
+      try {
+        if (s2 == null) {
+          utils.cp.doCommand(s1, new String[] { });
+        } else if (s3 == null) {
+          utils.cp.doCommand(s1, new String[] { s2, });
+        } else {
+          utils.cp.doCommand(s1, new String[] { s2, s3, });
+        }
+        return true;
+      } catch (Exception e) {
+        return false;
+      }
+    } else {
+      return false; // if not started, will just fail.
+    }
   }
 
   /* Needed Fixures:

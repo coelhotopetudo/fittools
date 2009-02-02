@@ -18,6 +18,13 @@
  * Contact the author via email at: christopher.schalk@gmail.com
  */
  
+var assert = "| verify | ${commands[i].command} |" ;
+var assertWithTarget = " with target | ${commands[i].target} |";
+var assertWithTargetAndValue = " and value | ${commands[i].value} |";
+var doCommand = "| doCommand | ${commands[i].command} |";
+var doCommandWithTarget = " with target | ${commands[i].target} |";
+var doCommandWithTargetAndValue = " and value | ${commands[i].value} |";
+
  /**
  * parse pasted fittools code into selenium IDE code
  * function parse(testCase, source) {  // IMPLEMENT LATER // }
@@ -28,19 +35,40 @@ function format(testCase, name) {
 }
 
 function formatCommands(commands) {
+  var template = "";
   var commandText = "";
   commandText = commandText +  "!| com.themaskedcrusader.fittools.fixture.BrowserFixture |";
   commandText = commandText +  " ${SEL_HOST} | ${SEL_PORT} | ${BASEURL} | ${BROWSER} |\n";
 
   for (var i = 0; i < commands.length; i++) {
-    commandText = commandText + "| doCommand | " +  commands[i].command + " |";
-    if (commands[i].target != '')
-      commandText = commandText + " with target | " + commands[i].target + " |";
-    if (commands[i].value != '')
-      commandText = commandText + " and value | " + commands[i].value + " |";
-    commandText = commandText + "\n";
+    // format assert commands for FitTools
+    if (commands[i].command.substring(0,6) == "assert") {
+      template = assert;
+      if (commands[i].target != '')
+        template = template + assertWithTarget;
+      if (commands[i].value != '')
+        template = template + assertWithTargetAndValue;
+    } else if (commands[i].command.substring(0,5) == "store") {
+      continue; // FitTools does not support store commands
+    } else if (commands[i].command.substring(0,6) == "verify") {
+      continue; // FitTools does not support verify commands 
+    } else {
+       // format doCommand commands for FitTools
+      template = doCommand;
+      if (commands[i].target != '')
+          template = template + doCommandWithTarget;
+      if (commands[i].value != '')
+          template = template + doCommandWithTargetAndValue;
+    }
+
+    var newText = template.replace(/\$\{([a-zA-Z0-9_\.\[\]]+)\}/g,
+         function(str, p1, offset, s) {
+             result = eval(p1);
+             return result != null ? result : '';
+         });
+             
+    commandText = commandText + newText + "\n";
   }
  
-
   return commandText; 
 }
