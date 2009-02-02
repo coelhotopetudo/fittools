@@ -71,17 +71,6 @@ public class BrowserFixture extends BaseDoFixture {
     }
   }
 
-  public void stopSelenium() {
-    if (utils.isStarted()) {
-      utils.cp.stop();
-      utils.setStarted(false);
-    }
-  }
-
-  public void pauseSeconds(int seconds) throws Exception {
-    Thread.sleep(seconds * 1000);
-  }
-
   public boolean verify(String s1) {
     return verifyWithTarget(s1, null);
   }
@@ -93,13 +82,7 @@ public class BrowserFixture extends BaseDoFixture {
   public boolean verifyWithTargetAndValue(String s1, String s2, String s3) {
     if (utils.isStarted()) {
       try {
-        if (s2 == null) {
-          utils.cp.doCommand(s1, new String[] { });
-        } else if (s3 == null) {
-          utils.cp.doCommand(s1, new String[] { s2, });
-        } else {
-          utils.cp.doCommand(s1, new String[] { s2, s3, });
-        }
+        doCommandWithTargetAndValue(s1, s2, s3);
         return true;
       } catch (Exception e) {
         return false;
@@ -109,6 +92,17 @@ public class BrowserFixture extends BaseDoFixture {
     }
   }
 
+  public void stopSelenium() {
+    if (utils.isStarted()) {
+      utils.cp.stop();
+      utils.setStarted(false);
+    }
+  }
+
+  public void pauseSeconds(int seconds) throws Exception {
+    Thread.sleep(seconds * 1000);
+  }
+  
   /* Needed Fixures:
    *
    * storeTextFromTargetInGlobal
