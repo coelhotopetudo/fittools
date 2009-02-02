@@ -21,7 +21,7 @@
 var assert = "| verify | ${commands[i].command} |" ;
 var assertWithTarget = " with target | ${commands[i].target} |";
 var assertWithTargetAndValue = " and value | ${commands[i].value} |";
-var doCommand = "| doCommand | ${commands[i].command} |";
+var doCommand = "| do command | ${commands[i].command} |";
 var doCommandWithTarget = " with target | ${commands[i].target} |";
 var doCommandWithTargetAndValue = " and value | ${commands[i].value} |";
 
@@ -53,7 +53,7 @@ function formatCommands(commands) {
     } else if (commands[i].command.substring(0,6) == "verify") {
       continue; // FitTools does not support verify commands 
     } else {
-       // format doCommand commands for FitTools
+       // format do command commands for FitTools
       template = doCommand;
       if (commands[i].target != '')
           template = template + doCommandWithTarget;
@@ -62,10 +62,10 @@ function formatCommands(commands) {
     }
 
     var newText = template.replace(/\$\{([a-zA-Z0-9_\.\[\]]+)\}/g,
-         function(str, p1, offset, s) {
-             result = eval(p1);
-             return result != null ? result : '';
-         });
+                                  function(str, p1, offset, s) {
+                                    result = eval(p1);
+                                    return result != null ? result : '';
+                                  });
              
     commandText = commandText + newText + "\n";
   }
