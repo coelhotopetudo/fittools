@@ -1,13 +1,10 @@
-#Things that we need to do to get this to version 0.1
-
 = Things To Do =
 
  * ~~Implement Fixture Parameters~~
  * ~~Implement selenium native browser control options from Selenium IDE~~
- * Implement specialized browser control options from Selenium IDE
-   * I'm afraid I'll have to do a lot of replicating as some options from SeleniumIDE are not natively supported in Selenium.  For instance, waitForTextPresent is not natively supported, you must check isTextPresent() every second in a loop, and break when it's found.  I'll have a list of supported commands up once I figure out how I'm going to do this.
- * Implement assert commands from selenium IDE 
-   * I'm not going to support Verify commands since asserts return a value that in FitNesse determines whether the test passes or fails.
+ * Implement FitTools Globals
+ * Implement FitTools BrowserFixture specialized commands
+ * Implement StringFixture.
 
 
 
