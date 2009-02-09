@@ -105,7 +105,6 @@ public class StringFixture extends BaseDoFixture {
    */
   public void storeTokenOfStringInGlobal(int token, String string, String global) {
     string = parse(string);
-    System.out.println(string);
     String[] tokens = string.split(" ");
     utils.setGlobal(global, tokens[token - 1]);
   }
