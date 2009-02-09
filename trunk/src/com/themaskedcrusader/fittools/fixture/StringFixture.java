@@ -53,7 +53,7 @@ public class StringFixture extends BaseDoFixture {
     do {
       toReturn += super.utils.generateUnique();
     } while (toReturn.length() < length);
-    toReturn = toReturn.substring(0, length);
+    toReturn = toReturn.substring(toReturn.length() - length);
     super.utils.setGlobal(global, toReturn);
     return toReturn;
   }
@@ -62,16 +62,16 @@ public class StringFixture extends BaseDoFixture {
    * Used to create a paragraph of unique words with varying lengths.  Useful when you need to
    * generate a unique string of words, <b>Usage:</b>
    * <pre>
-   * | make unique paragraph with | 15 | words for global | myGlobal |
+   * | make unique paragraph for global | myGlobal | with length | 15 |
    * </pre>
-   * @param words  - an intenger value of how many words to include in paragraph
    * @param global - variable to store generated paragraph within.
+   * @param length - how many words to include in paragraph
    */
-  public void makeUniqueParagraphWithWordsForGlobal(int words, String global) {
+  public void makeUniqueParagraphForGlobalWithLength(String global, int length) {
     String paragraph = "";
     String word;
-    for (int x = 0; x < words; x++) {
-      word = makeUniqueStringForGlobalWithLength(global, (int) (Math.random() * 10));
+    for (int x = 0; x < length; x++) {
+      word = makeUniqueStringForGlobalWithLength(global, (int)(Math.random() * 8) + 2);
       paragraph += word + " ";
     }
     utils.setGlobal(global, paragraph);
@@ -105,8 +105,9 @@ public class StringFixture extends BaseDoFixture {
    */
   public void storeTokenOfStringInGlobal(int token, String string, String global) {
     string = parse(string);
+    System.out.println(string);
     String[] tokens = string.split(" ");
-    utils.setGlobal(global, tokens[token]);
+    utils.setGlobal(global, tokens[token - 1]);
   }
 
   /**
@@ -117,8 +118,26 @@ public class StringFixture extends BaseDoFixture {
    * </pre>
    * @param global - variable whose contents to print to the FitNesse error page
    */
-  public void printGlobal(String global) {
+  public boolean printGlobal(String global) {
     System.out.println(global + " value is: " + utils.getGlobal(global));
+    return true;
+  }
+
+  /**
+   * Compares two strings and returns true if they are equal, false if they are not. String is 
+   * parsed for globals before comparison is made. <b>Usage:</b>
+   * <pre>
+   * | compare string | String 1 | with global | myGlobal |
+   * </pre>
+   * @param string - String to compare
+   * @param global - Global to compare
+   * @return - result of comparison (i.e. whether or not the string and the global are the same)
+   */
+  public boolean compareStringWithGlobal(String string, String global) {
+    string = parse(string);
+    global = utils.getGlobal(global);
+    utils.debug("Comparing: " + string + " : " + global, "compare");
+    return (string.equals(global));
   }
 
   /**
@@ -170,32 +189,32 @@ public class StringFixture extends BaseDoFixture {
    * global. <b>Note:</b> there is <b>no space</b> between string 1 and string 2 in the final
    * string. Strings are parsed for globals before they are concatenated.  <b>Usage:</b>
    * <pre>
-   * | concatenate | this string | with | that string | and store in global | myGlobal |
+   * | cat | this string | with | that string | and store in global | myGlobal |
    * </pre>
    * This example results in the final string being "this stringthat string" (less quotes)
    * @param c1     - first string
    * @param c2     - second string - will be tacked onto the end of the first string
    * @param global - global in which concatenated string will be stored.
    */
-  public void concatenateWithAndStoreInGlobal(String c1, String c2, String global) {
+  public void catWithAndStoreInGlobal(String c1, String c2, String global) {
     c1 = parse(c1).trim();
     c2 = parse(c2).trim();
     c1 = c1 + c2;
     utils.setGlobal(global, c1);
   }
-  
+
   /**Used to concatenate two strings together and store the resulting string in a specified
    * global. <b>Note:</b> there <b>is</b> a space between string 1 and string 2 in the final
    * string. Strings are parsed for globals before they are concatenated.  <b>Usage:</b>
    * <pre>
-   * | concatenate | this string | with | that string | and store in global | myGlobal | with space |
+   * | cat | this string | with | that string | and store in global | myGlobal | with space |
    * </pre>
    * This example results in the final string being "this string that string" (less quotes)
    * @param c1     - first string
    * @param c2     - second string - will be tacked onto the end of the first string
    * @param global - global in which concatenated string will be stored.
    */
-  public void concatenateWithAndStoreInGlobalWithSpace(String c1, String c2, String global){
+  public void catWithAndStoreInGlobalWithSpace(String c1, String c2, String global) {
     c1 = parse(c1).trim();
     c2 = parse(c2).trim();
     c1 = c1 + " " + c2;
@@ -206,30 +225,14 @@ public class StringFixture extends BaseDoFixture {
    * Used to store the length of a string in a global. Useful for measuring strings to know if it's
    * length is expected. String is parsed for globals before processing. <b>Usage:</b>
    * <pre>
-   * | store string | this string | length in glonal | myGlobal |
+   * | store length of global | myString | in glonal | myGlobal |
    * </pre>
-   * @param toGet  - the string to get the length of
+   * @param toGet  - the global to get the length of
    * @param global - global to store the length of specified within.
    */
-  public void storeStringLengthInGlobal(String toGet, String global) {
-    toGet = parse(toGet);
+  public void storeLengthOfGlobalInGlobal(String toGet, String global) {
+    toGet = utils.getGlobal(toGet);
     utils.setGlobal(global, "" + toGet.trim().length());
-  }
-
-  /**
-   * Used to compare the values of two strings. The comparison is both done within the test, and 
-   * printed to the FitNesse error log.  Strings are parsed for globals. <b>Usage:</b>
-   * <pre>
-   * | compare | this string | with | this string |
-   * </pre>
-   * @param c1 - String one
-   * @param c2 - String two
-   */
-  public boolean compareWith(String c1, String c2) {
-    c1 = parse(c1);
-    c2 = parse(c2);
-    System.out.println(c1 + " : " + c2);
-    return c1.equals(c2);    
   }
 
   /**
@@ -260,7 +263,20 @@ public class StringFixture extends BaseDoFixture {
     prefix = parse(prefix);
     utils.setGlobal(global, prefix + utils.getGlobal(global));
   }
-  
+
+  /**
+   * Used to add a string and a space to the beginning of a stored global. <b>Usage:</b>
+   * <pre>
+   * | add prefix | acct# | to global | myGlobal | with space |
+   * </pre>
+   * @param prefix - String of characters to add to the global
+   * @param global - global to add the characters to
+   */
+  public void addPrefixToGlobalWithSpace(String prefix, String global) {
+    prefix = parse(prefix);
+    utils.setGlobal(global, prefix + " "+ utils.getGlobal(global));
+  }
+
   /**
    * Used to add a suffix to the end of a stored global. <b>Usage:</b>
    * <pre>
@@ -274,4 +290,16 @@ public class StringFixture extends BaseDoFixture {
     utils.setGlobal(global, utils.getGlobal(global) + suffix);
   }
 
+  /**
+   * Used to add a space and a suffix to the end of a stored global. <b>Usage:</b>
+   * <pre>
+   * | add suffix | lastname | to global | myGlobal | with space |
+   * </pre>
+   * @param suffix - String of characters to add to the global
+   * @param global - global to add characters to
+   */
+  public void addSuffixToGlobalWithSpace(String suffix, String global) {
+    suffix = parse(suffix);
+    utils.setGlobal(global, utils.getGlobal(global) + " " + suffix);
+  }
 }

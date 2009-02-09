@@ -85,6 +85,7 @@ public class BrowserFixture extends BaseDoFixture {
         doCommandWithTargetAndValue(s1, s2, s3);
         return true;
       } catch (Exception e) {
+        System.out.println("ASSERT FAILED: " + s1 + " with target " + s2 + " and value " + s3);
         return false;
       }
     } else {
@@ -101,6 +102,14 @@ public class BrowserFixture extends BaseDoFixture {
 
   public void pauseSeconds(int seconds) throws Exception {
     Thread.sleep(seconds * 1000);
+  }
+  
+  public void pauseSecond(int second) throws Exception {
+    pauseSeconds(second);
+  }
+  
+  public void setDebug () {
+    utils.debug = true;
   }
   
   /* Needed Fixures:
