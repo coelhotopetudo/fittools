@@ -24,19 +24,26 @@ import com.themaskedcrusader.fittools.FitToolsUtils;
 import fitlibrary.DoFixture;
 
 public class BaseDoFixture extends DoFixture {
+  
+  private final String SPACE = " ";
+  
   protected FitToolsUtils utils = FitToolsUtils.getInstance(); // for utils variables
 
   public String parse(String toParse) {
-    String[] tokens = toParse.split(" ");
+    utils.debug("Parsing: " + toParse, "parse");
+    String[] tokens = toParse.split(SPACE);
     String toReturn = "";
     for (String token: tokens) {
       if (token.indexOf("#[") > -1 && token.indexOf("]") > -1) {
-        toReturn += utils.getGlobal(token.substring(1, token.length() - 1)) + " ";
+        utils.debug("Global Found: " + token, "parse");
+        toReturn += utils.getGlobal(token.substring(2, token.length() - 1)) + SPACE;
       } else {
-        toReturn += token + " ";
+        utils.debug("No global found: " + token, "parse");
+        toReturn += token + SPACE;
       }
     }
-    return toReturn.trim();
+    utils.debug("Returning: " + toReturn, "parse");
+    return toReturn.trim(); 
   }
 
   public boolean printGplWarranty() {

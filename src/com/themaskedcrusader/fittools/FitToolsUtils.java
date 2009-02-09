@@ -28,6 +28,8 @@ import java.text.SimpleDateFormat;
 
 public class FitToolsUtils {
   public static CommandProcessor cp;
+  public boolean debug;
+  
   private boolean started;
   private Map global = new HashMap();
   private int count = 0;
@@ -79,5 +81,10 @@ public class FitToolsUtils {
 
   public boolean isStarted() {
     return started;
+  }
+  
+  public void debug(String message, String function){
+    if (debug)
+      System.out.println("DEBUG(" + function + "):: " + message);
   }
 }
