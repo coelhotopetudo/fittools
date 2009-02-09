@@ -5,8 +5,10 @@
  * ~~Implement Fixture Parameters~~
  * ~~Implement selenium native browser control options from Selenium IDE~~
  * Implement FitTools Globals
+   * ~in StringFixture~
+   * in BrowserFixture
  * Implement FitTools BrowserFixture specialized commands
- * Implement StringFixture.
+ * ~Implement StringFixture.~
 
 
 
