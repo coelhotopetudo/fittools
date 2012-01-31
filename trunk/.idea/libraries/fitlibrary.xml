@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="fitlibrary">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/fitlibrary.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
