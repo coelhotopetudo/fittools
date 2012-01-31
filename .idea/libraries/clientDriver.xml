@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="clientDriver">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/selenium-java-2.18.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/selenium-java-2.18.0-srcs.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
