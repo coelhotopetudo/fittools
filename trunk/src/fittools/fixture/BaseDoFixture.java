@@ -68,8 +68,7 @@ public class BaseDoFixture extends DoFixture {
   }
 
   public boolean printRedistributionConditions() {
-    System.out.println("REDISTRIBUTION CONDITIONS NOT AVAILABLE");
+    System.out.println("REDISTRIBUTION CONDITIONS NOT AVAILABLE, YET");
     return false;
   }
-
 }
