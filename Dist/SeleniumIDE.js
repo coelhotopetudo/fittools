@@ -18,12 +18,20 @@
  * Contact the author via email at: christopher.schalk@gmail.com
  */
  
-var assert = "| verify | ${commands[i].command} |" ;
+var assert = "| assert | ${commands[i].command} |" ;
 var assertWithTarget = " with target | ${commands[i].target} |";
 var assertWithTargetAndValue = " and value | ${commands[i].value} |";
 var doCommand = "| do command | ${commands[i].command} |";
 var doCommandWithTarget = " with target | ${commands[i].target} |";
 var doCommandWithTargetAndValue = " and value | ${commands[i].value} |";
+var storeVariable = "| store variable | ${commands[i].target} | in global | ${commands[i].value} ] |";
+
+// public void storeVariableInGlobal(String s1, String s2) {
+//     String toStore = utils.cp.getString(s1, null);
+//     super.setGlobal(s2, toStore);
+//     // use #[s2] to retrieve value for later.
+
+
 
  /**
  * parse pasted fittools code into selenium IDE code
@@ -37,7 +45,7 @@ function format(testCase, name) {
 function formatCommands(commands) {
   var template = "";
   var commandText = "";
-  commandText = commandText +  "!| com.themaskedcrusader.fittools.fixture.BrowserFixture |";
+  commandText = commandText +  "!| fittools.fixture.BrowserFixture |";
   commandText = commandText +  " ${SEL_HOST} | ${SEL_PORT} | ${BASEURL} | ${BROWSER} |\n";
 
   for (var i = 0; i < commands.length; i++) {
@@ -49,9 +57,9 @@ function formatCommands(commands) {
       if (commands[i].value != '')
         template = template + assertWithTargetAndValue;
     } else if (commands[i].command.substring(0,5) == "store") {
-      continue; // FitTools does not support store commands
+        template = storeVariable;
     } else if (commands[i].command.substring(0,6) == "verify") {
-      continue; // FitTools does not support verify commands 
+      continue; // FitTools does not support verify commands. Please use assert
     } else {
        // format do command commands for FitTools
       template = doCommand;

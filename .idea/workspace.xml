@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="fittools" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="46b25f0f-a96d-4b7a-b316-2793cb78f710" name="Default" comment="" />
     <ignored path="$USER_HOME_GRAILS$/" />
@@ -19,6 +24,21 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/fittools/fixture/BrowserFixture.java" line="87" class="fittools.fixture.BrowserFixture" package="fittools.fixture">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -59,7 +79,98 @@
   </component>
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="SeleniumIDE.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Dist/SeleniumIDE.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="73" selection-start="1840" selection-end="1840" vertical-scroll-proportion="0.1774942">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="READ.ME" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Dist/READ.ME">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="104" selection-start="951" selection-end="951" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BrowserFixture.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fittools/fixture/BrowserFixture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="41" selection-start="2650" selection-end="2650" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fixture.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/fitnesse.jar!/fit/Fixture.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="33" selection-start="332" selection-end="332" vertical-scroll-proportion="-5.6666665">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FitToolsUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fittools/FitToolsUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="84" column="17" selection-start="3062" selection-end="3062" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogicFixture.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fittools/fixture/LogicFixture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="0" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringFixture.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fittools/fixture/StringFixture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="71" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringFixtureTest.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fittools/tests/StringFixtureTest.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="64" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BrowserFixtureTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fittools/tests/BrowserFixtureTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="13" selection-start="1041" selection-end="1041" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseDoFixture.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fittools/fixture/BaseDoFixture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="20" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -72,12 +183,15 @@
         <option value="$PROJECT_DIR$/src/GNU_GPL.txt" />
         <option value="$PROJECT_DIR$/src/fittools/tests/BrowserFixtureTest.java" />
         <option value="$PROJECT_DIR$/src/fittools/UnitTest/BrowserFixtureTest.java" />
-        <option value="$PROJECT_DIR$/src/fittools/FitToolsUtils.java" />
-        <option value="$PROJECT_DIR$/src/fittools/fixture/StringFixture.java" />
-        <option value="$PROJECT_DIR$/src/fittools/fixture/BrowserFixture.java" />
-        <option value="$PROJECT_DIR$/src/fittools/fixture/BaseDoFixture.java" />
         <option value="$PROJECT_DIR$/src/READ.ME" />
         <option value="$PROJECT_DIR$/src/SeleniumIDE.js" />
+        <option value="$PROJECT_DIR$/Dist/READ.ME" />
+        <option value="$PROJECT_DIR$/src/fittools/fixture/BaseDoFixture.java" />
+        <option value="$PROJECT_DIR$/src/fittools/fixture/StringFixture.java" />
+        <option value="$PROJECT_DIR$/src/fittools/fixture/LogicFixture.java" />
+        <option value="$PROJECT_DIR$/src/fittools/FitToolsUtils.java" />
+        <option value="$PROJECT_DIR$/src/fittools/fixture/BrowserFixture.java" />
+        <option value="$PROJECT_DIR$/Dist/SeleniumIDE.js" />
       </list>
     </option>
   </component>
@@ -119,22 +233,39 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Production">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FitTools2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FitTools2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            <PATH_ELEMENT USER_OBJECT="FitTools">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="FitTools">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="fittools">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+        <subPane subId="Tests" />
       </pane>
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -189,6 +320,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FitTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FitTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fittools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="fixture" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -209,6 +362,53 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FitTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FitTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FitTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FitTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fittools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FitTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FitTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fittools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fixture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -224,8 +424,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -413,7 +613,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1276" y="-4" width="1288" height="1032" extended-state="6" />
+    <frame x="1276" y="-4" width="1288" height="1032" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -480,58 +680,86 @@
         <state line="268" column="39" selection-start="13578" selection-end="13578" vertical-scroll-proportion="0.9613636" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fittools/UnitTest/StringFixtureTest.txt">
+    <entry file="file://$PROJECT_DIR$/Dist/READ.ME">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="64" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.46363637" />
+        <state line="21" column="104" selection-start="951" selection-end="951" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fittools/UnitTest/BrowserFixtureTest.java">
+    <entry file="file://$PROJECT_DIR$/src/fittools/fixture/LogicFixture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="17" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0" />
+        <state line="3" column="0" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fittools/fixture/BrowserFixture.java">
+    <entry file="jar://$PROJECT_DIR$/lib/selenium-java-2.18.0.jar!/com/thoughtworks/selenium/CommandProcessor.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="26" selection-start="90" selection-end="90" vertical-scroll-proportion="0.019318182">
+        <state line="9" column="21" selection-start="280" selection-end="280" vertical-scroll-proportion="0.16229117">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fittools/tests/BrowserFixtureTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="13" selection-start="1041" selection-end="1041" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/selenium-java-2.18.0.jar!/com/thoughtworks/selenium/HttpCommandProcessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="11" selection-start="527" selection-end="527" vertical-scroll-proportion="0.24787363">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fittools/fixture/StringFixture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="26" selection-start="90" selection-end="90" vertical-scroll-proportion="0.019318182">
+        <state line="23" column="71" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fittools/fixture/BaseDoFixture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="20" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/fitnesse.jar!/fit/Fixture.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="33" selection-start="332" selection-end="332" vertical-scroll-proportion="-5.6666665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fittools/fixture/BrowserFixture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="41" selection-start="2650" selection-end="2650" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fittools/tests/StringFixtureTest.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="64" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fittools/FitToolsUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="27" selection-start="91" selection-end="91" vertical-scroll-proportion="0.019318182">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fittools/fixture/BaseDoFixture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="81" selection-start="463" selection-end="463" vertical-scroll-proportion="0.15454546">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="84" column="17" selection-start="3062" selection-end="3062" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Dist/SeleniumIDE.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="80" selection-start="932" selection-end="932" vertical-scroll-proportion="0.3284091">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dist/READ.ME">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="39" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.57954544">
+        <state line="42" column="73" selection-start="1840" selection-end="1840" vertical-scroll-proportion="0.1774942">
           <folding />
         </state>
       </provider>
