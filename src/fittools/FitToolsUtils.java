@@ -86,8 +86,17 @@ public class FitToolsUtils {
         return started;
     }
 
-    public void debug(String message, String function) {
+    public void log(String message) {
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        String caller = stack[2].getMethodName();
         if (debug)
-            System.out.println("DEBUG(" + function + "):: " + message);
+            System.out.println("[" + caller + "]:: " + message);
+    }
+    
+    public void debug(String message) {
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        String caller = stack[2].getMethodName();
+        if (debug)
+            System.out.println("DEBUG [" + caller + "]:: " + message);
     }
 }

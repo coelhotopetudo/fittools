@@ -20,7 +20,9 @@
 
 package fittools.fixture;
 
+@SuppressWarnings("unused")
 public class StringFixture extends BaseDoFixture {
+    // todo: Add meaningful log/debug messages
 
     /**
      * Used to create a unique string for specified global.  Unique string is a 5 digit unique number.
@@ -30,7 +32,7 @@ public class StringFixture extends BaseDoFixture {
      * </pre>
      *
      * @param global - variable to store generated unique string within
-     * @return
+     * @return a copy of the text stored in the global
      */
 
     public String makeUniqueStringForGlobal(String global) {
@@ -49,7 +51,7 @@ public class StringFixture extends BaseDoFixture {
      *
      * @param global - variable to store generated unique string within
      * @param length - final length of generated string
-     * @return
+     * @return a copy of the text stored in the global
      */
     public String makeUniqueStringForGlobalWithLength(String global, int length) {
         String toReturn = "";
@@ -83,8 +85,8 @@ public class StringFixture extends BaseDoFixture {
 
     /**
      * Used to store a string inside of a global.  Useful when you will be reusing the same string
-     * an unknown number of times and to increase managability of tests.  specified string is parsed
-     * and can include previously defined globals. <b>Usage:</b>
+     * an unknown number of times and to increase manageability of tests.  specified string is parsed
+     * and can include previously defined global. <b>Usage:</b>
      * <pre>
      * | store string | this is my string | in global | myGlobal |
      * </pre>
@@ -100,7 +102,7 @@ public class StringFixture extends BaseDoFixture {
     /**
      * Used to store a specified single word from a string in a global. Useful if you know you will
      * get a certain string and you need only one word from that string for use in later tests.
-     * Specified string can include previously defined globals. <b>Usage:</b>
+     * Specified string can include previously defined global. <b>Usage:</b>
      * <pre>
      * | store token | 3 | of string | #[myGlobal] | in global | myGlobal |
      * </pre>
@@ -123,6 +125,7 @@ public class StringFixture extends BaseDoFixture {
      * </pre>
      *
      * @param global - variable whose contents to print to the FitNesse error page
+     * @return true - highlights the row green (successful) in FitNesse
      */
     public boolean printGlobal(String global) {
         System.out.println(global + " value is: " + utils.getGlobal(global));
@@ -131,7 +134,7 @@ public class StringFixture extends BaseDoFixture {
 
     /**
      * Compares two strings and returns true if they are equal, false if they are not. String is
-     * parsed for globals before comparison is made. <b>Usage:</b>
+     * parsed for global before comparison is made. <b>Usage:</b>
      * <pre>
      * | compare string | String 1 | with global | myGlobal |
      * </pre>
@@ -143,7 +146,7 @@ public class StringFixture extends BaseDoFixture {
     public boolean compareStringWithGlobal(String string, String global) {
         string = parse(string);
         global = utils.getGlobal(global);
-        utils.debug("Comparing: " + string + " : " + global, "compare");
+        utils.debug("Comparing: " + string + " : " + global);
         return (string.equals(global));
     }
 
@@ -196,11 +199,11 @@ public class StringFixture extends BaseDoFixture {
     /**
      * Used to concatenate two strings together and store the resulting string in a specified
      * global. <b>Note:</b> there is <b>no space</b> between string 1 and string 2 in the final
-     * string. Strings are parsed for globals before they are concatenated.  <b>Usage:</b>
+     * string. Strings are parsed for global before they are concatenated.  <b>Usage:</b>
      * <pre>
-     * | cat | this string | with | that string | and store in global | myGlobal |
+     * | cat | race | with | way | and store in global | myGlobal |
      * </pre>
-     * This example results in the final string being "this stringthat string" (less quotes)
+     * This example results in the final string being "raceway" (less quotes)
      *
      * @param c1     - first string
      * @param c2     - second string - will be tacked onto the end of the first string
@@ -216,7 +219,7 @@ public class StringFixture extends BaseDoFixture {
     /**
      * Used to concatenate two strings together and store the resulting string in a specified
      * global. <b>Note:</b> there <b>is</b> a space between string 1 and string 2 in the final
-     * string. Strings are parsed for globals before they are concatenated.  <b>Usage:</b>
+     * string. Strings are parsed for global before they are concatenated.  <b>Usage:</b>
      * <pre>
      * | cat | this string | with | that string | and store in global | myGlobal | with space |
      * </pre>
@@ -235,9 +238,9 @@ public class StringFixture extends BaseDoFixture {
 
     /**
      * Used to store the length of a string in a global. Useful for measuring strings to know if it's
-     * length is expected. String is parsed for globals before processing. <b>Usage:</b>
+     * length is expected. String is parsed for global before processing. <b>Usage:</b>
      * <pre>
-     * | store length of global | myString | in glonal | myGlobal |
+     * | store length of global | myString | in global | myGlobal |
      * </pre>
      *
      * @param toGet  - the global to get the length of
@@ -296,7 +299,7 @@ public class StringFixture extends BaseDoFixture {
     /**
      * Used to add a suffix to the end of a stored global. <b>Usage:</b>
      * <pre>
-     * | add suffix | lastname | to global | myGlobal |
+     * | add suffix | last name | to global | myGlobal |
      * </pre>
      *
      * @param suffix - String of characters to add to the global
@@ -310,7 +313,7 @@ public class StringFixture extends BaseDoFixture {
     /**
      * Used to add a space and a suffix to the end of a stored global. <b>Usage:</b>
      * <pre>
-     * | add suffix | lastname | to global | myGlobal | with space |
+     * | add suffix | last name | to global | myGlobal | with space |
      * </pre>
      *
      * @param suffix - String of characters to add to the global
@@ -318,6 +321,6 @@ public class StringFixture extends BaseDoFixture {
      */
     public void addSuffixToGlobalWithSpace(String suffix, String global) {
         suffix = parse(suffix);
-        utils.setGlobal(global, utils.getGlobal(global) + " " + suffix);
+        utils.setGlobal(global, utils.getGlobal(global) + SPACE + suffix);
     }
 }
