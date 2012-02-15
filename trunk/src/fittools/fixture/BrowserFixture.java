@@ -32,9 +32,9 @@ public class BrowserFixture extends BaseDoFixture {
         int selPort = Integer.parseInt(args[1]);
         String baseURL = args[2];
         String browser = args[3];
-        utils.debug("Selenium Host: " + selHost, "startBrowser");
-        utils.debug("Selenium Port: " + selPort, "startBrowser");
-        utils.debug("Browser Type : " + browser, "startBrowser");
+        utils.log("Selenium Host: " + selHost);
+        utils.log("Selenium Port: " + selPort);
+        utils.log("Browser Type : " + browser);
         if (!utils.isStarted()) {
             try {
                 utils.cp = new HttpCommandProcessor(selHost, selPort, browser, baseURL);
@@ -69,7 +69,7 @@ public class BrowserFixture extends BaseDoFixture {
             } else {
                 value += utils.cp.getString(s1, new String[]{s2, s3,});
             }
-            utils.debug(s1 + ":" + value, "doCommand");
+            utils.debug(s1 + ":" + value);
         }
     }
 
