@@ -17,66 +17,105 @@
  * 
  * Contact the author via email at: christopher.schalk@gmail.com
  */
- 
-var assert = "| assert | ${commands[i].command} |" ;
-var assertWithTarget = " with target | ${commands[i].target} |";
-var assertWithTargetAndValue = " and value | ${commands[i].value} |";
+
+var browserHeader = "!| fittools.fixture.BrowserFixture | ${SEL_HOST} | ${SEL_PORT} | ${BASEURL} | ${BROWSER} |\n";
+var target = "${commands[i].target}";
+var value = "${commands[i].value}";
 var doCommand = "| do command | ${commands[i].command} |";
-var doCommandWithTarget = " with target | ${commands[i].target} |";
-var doCommandWithTargetAndValue = " and value | ${commands[i].value} |";
-var storeVariable = "| store variable | ${commands[i].target} | in global | ${commands[i].value} ] |";
-
-// public void storeVariableInGlobal(String s1, String s2) {
-//     String toStore = utils.cp.getString(s1, null);
-//     super.setGlobal(s2, toStore);
-//     // use #[s2] to retrieve value for later.
-
-
-
- /**
- * parse pasted fittools code into selenium IDE code
- * function parse(testCase, source) {  // IMPLEMENT LATER // }
- */
+var doCommandTarget = " with target | " + target + " |";
+var doCommandValue = " and value | " + value + " |";
+var storeValue = " | in global | " + value + " |";
 
 function format(testCase, name) {
-  return formatCommands(testCase.commands);
+    return formatCommands(testCase.commands);
 }
 
 function formatCommands(commands) {
-  var template = "";
-  var commandText = "";
-  commandText = commandText +  "!| fittools.fixture.BrowserFixture |";
-  commandText = commandText +  " ${SEL_HOST} | ${SEL_PORT} | ${BASEURL} | ${BROWSER} |\n";
+    var template = "";
+    var commandText = browserHeader;
 
-  for (var i = 0; i < commands.length; i++) {
-    // format assert commands for FitTools
-    if (commands[i].command.substring(0,6) == "assert") {
-      template = assert;
-      if (commands[i].target != '')
-        template = template + assertWithTarget;
-      if (commands[i].value != '')
-        template = template + assertWithTargetAndValue;
-    } else if (commands[i].command.substring(0,5) == "store") {
-        template = storeVariable;
-    } else if (commands[i].command.substring(0,6) == "verify") {
-      continue; // FitTools does not support verify commands. Please use assert
-    } else {
-       // format do command commands for FitTools
-      template = doCommand;
-      if (commands[i].target != '')
-          template = template + doCommandWithTarget;
-      if (commands[i].value != '')
-          template = template + doCommandWithTargetAndValue;
+    for (var i = 0; i < commands.length; i++) {
+
+        if (commands[i].command.substring(0, 6) == "assert" ||
+                commands[i].command.substring(0, 6) == "verify") {
+            template = prepAssert(commands[i].command);
+
+        } else if (commands[i].command.substring(0, 5) == "store") {
+            template = prepStore(commands[i].command);
+
+        } else {
+            template = doCommand;
+            template = addSuffix(template, commands[i], doCommandTarget, doCommandValue);
+        }
+
+        if (template != '') {
+            var newText = template.replace(/\$\{([a-zA-Z0-9_\.\[\]]+)\}/g,
+                    function(str, p1, offset, s) {
+                        result = eval(p1);
+                        return result != null ? result : '';
+                    });
+
+            commandText = commandText + newText + "\n";
+        }
     }
 
-    var newText = template.replace(/\$\{([a-zA-Z0-9_\.\[\]]+)\}/g,
-                                  function(str, p1, offset, s) {
-                                    result = eval(p1);
-                                    return result != null ? result : '';
-                                  });
-             
-    commandText = commandText + newText + "\n";
-  }
- 
-  return commandText; 
+    return commandText;
+}
+
+function prepAssert(command) {
+    switch (command) {
+        case 'assertTextPresent':
+        case 'verifyTextPresent':
+            return "| verify text | " + target + " | is present |";
+
+        case 'verifyTitle':
+        case 'assertTitle':
+            return  "| verify page title is | " + target + " |";
+
+        case 'verifyValue':
+        case 'assertValue':
+            return "| verify value of | " + target + " | is | " + value + " |";
+
+        case 'verifyText':
+        case 'assertText':
+            return "| verify text of element | " + target + " | is | " + value + " |";
+            break;
+
+        case 'verifyTable':
+        case 'assertTable':
+            return "| verift table element at | " + target + "} | is | " + value + " |";
+
+        case 'verifyElementPresent':
+        case 'assertElementPresent':
+            return "| verify element | " + target + " | is present |";
+
+        default: return '';
+    }
+}
+
+function prepStore(command) {
+    var toReturn;
+    switch (command) {
+        case 'storeTextPresent'    : toReturn = "| store text present | ";          break;
+        case 'storeText'           : toReturn = "| store text | ";                  break;
+        case 'storeTitle'          : toReturn = "| store page title in global | ";  break;
+        case 'storeValue'          : toReturn = "| store value of | ";              break;
+        case 'storeTable'          : toReturn = "| store table element at | ";      break;
+        case 'storeElementPresent' : toReturn = "| store element present | ";       break;
+        default: return '';
+    }
+
+    return addSuffix(toReturn, command, target, storeValue);
+}
+
+function addSuffix(template, command, target, value) {
+    if (command.target != '') {
+        template = template + target;
+    }
+
+    if (command.value != '') {
+        template = template + value;
+    }
+
+    return template;
 }
