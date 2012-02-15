@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FitTools Distribution">
+    <output-path>$PROJECT_DIR$/Dist</output-path>
+    <root id="archive" name="FitTools.zip">
+      <element id="artifact" artifact-name="fittools" />
+      <element id="file-copy" path="$PROJECT_DIR$/Dist/SeleniumIDE.js" />
+      <element id="file-copy" path="$PROJECT_DIR$/Dist/READ.ME" />
+      <element id="file-copy" path="$PROJECT_DIR$/Dist/GNU_GPL.txt" />
+    </root>
+  </artifact>
+</component>
