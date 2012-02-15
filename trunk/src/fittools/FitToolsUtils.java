@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat;
 @SuppressWarnings("unchecked")
 public class FitToolsUtils {
     public static CommandProcessor cp;
-    public boolean debug;
+    public static boolean debug;
 
     private boolean started;
     private Map global = new HashMap();

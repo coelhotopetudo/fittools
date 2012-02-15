@@ -83,7 +83,7 @@ function prepAssert(command) {
 
         case 'verifyTable':
         case 'assertTable':
-            return "| verift table element at | " + target + "} | is | " + value + " |";
+            return "| verify table element at | " + target + " | is | " + value + " |";
 
         case 'verifyElementPresent':
         case 'assertElementPresent':
