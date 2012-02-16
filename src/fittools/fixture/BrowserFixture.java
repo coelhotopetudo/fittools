@@ -84,7 +84,7 @@ public class BrowserFixture extends BaseDoFixture {
 
     public boolean verifyWithTargetAndValue(String command, String target, String value) {
         String result = doCommandWithTargetAndValue(command, target, value);
-        return Boolean.parseBoolean(result);
+        return (result.contains("true"));
     }
 
     public void storeTextPresentInGlobal(String target, String value) {
