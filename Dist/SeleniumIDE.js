@@ -24,6 +24,7 @@ var value = "${commands[i].value}";
 var doCommand = "| do command | ${commands[i].command} |";
 var doCommandTarget = " with target | " + target + " |";
 var doCommandValue = " and value | " + value + " |";
+var verify = "| verify | ${commands[i].command} | ";
 var storeValue = " | in global | " + value + " |";
 
 function format(testCase, name) {
@@ -38,7 +39,9 @@ function formatCommands(commands) {
 
         if (commands[i].command.substring(0, 6) == "assert" ||
                 commands[i].command.substring(0, 6) == "verify") {
-            template = prepAssert(commands[i].command);
+            commands[i].command.replace("verify", "assert");
+            template = verify;
+            template = addSuffix(template, commands[i], doCommandTarget, doCommandValue);
 
         } else if (commands[i].command.substring(0, 5) == "store") {
             template = prepStore(commands[i].command);
@@ -60,37 +63,6 @@ function formatCommands(commands) {
     }
 
     return commandText;
-}
-
-function prepAssert(command) {
-    switch (command) {
-        case 'assertTextPresent':
-        case 'verifyTextPresent':
-            return "| verify text | " + target + " | is present |";
-
-        case 'verifyTitle':
-        case 'assertTitle':
-            return  "| verify page title is | " + target + " |";
-
-        case 'verifyValue':
-        case 'assertValue':
-            return "| verify value of | " + target + " | is | " + value + " |";
-
-        case 'verifyText':
-        case 'assertText':
-            return "| verify text of element | " + target + " | is | " + value + " |";
-            break;
-
-        case 'verifyTable':
-        case 'assertTable':
-            return "| verify table element at | " + target + " | is | " + value + " |";
-
-        case 'verifyElementPresent':
-        case 'assertElementPresent':
-            return "| verify element | " + target + " | is present |";
-
-        default: return '';
-    }
 }
 
 function prepStore(command) {

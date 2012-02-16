@@ -49,15 +49,15 @@ public class BrowserFixture extends BaseDoFixture {
         }
     }
 
-    public void doCommand(String s1) {
+    public String doCommand(String s1) {
         doCommandWithTarget(s1, null);
     }
 
-    public void doCommandWithTarget(String s1, String s2) {
+    public String doCommandWithTarget(String s1, String s2) {
         doCommandWithTargetAndValue(s1, s2, null);
     }
 
-    public void doCommandWithTargetAndValue(String s1, String s2, String s3) {
+    public String doCommandWithTargetAndValue(String s1, String s2, String s3) {
         if (!utils.isStarted())
             startBrowser();
         if (utils.isStarted()) {
@@ -70,40 +70,21 @@ public class BrowserFixture extends BaseDoFixture {
                 value += utils.cp.getString(s1, new String[]{s2, s3,});
             }
             utils.debug(s1 + ":" + value);
+            return value;
         }
+        return "Selenium Not Running!";
     }
 
     // todo: Add meaningful debugging to these fixtures
     // todo: Parse for Global before processing.
 
-    public boolean verifyTextIsPresent(String target) {
-        String test = utils.cp.getString("isTextPresent", new String[]{target,});
-        return Boolean.parseBoolean(test);
+    public boolean verifyWithTarget(String command, String target) {
+        return verifyWithTargetAndValue(command, target, null);
     }
 
-    public boolean verifyPageTitleIs(String target) {
-        String title = utils.cp.getString("getTitle", new String[]{target,});
-        return (title.equals(target));
-    }
-
-    public boolean verifyValueOfIs(String target, String value) {
-        String test = utils.cp.getString("getValue", new String[]{target,});
-        return (test.equals(value));
-    }
-
-    public boolean verifyTextOfElementIs(String target, String value) {
-        String test = utils.cp.getString("getText", new String[]{target,});
-        return (test.equals(value));
-    }
-
-    public boolean verifyTableElementAtIs(String target, String value) {
-        String test = utils.cp.getString("getTable", new String[]{target,});
-        return (test.equals(value));
-    }
-
-    public boolean verifyElementIsPresent(String target) {
-        String test = utils.cp.getString("isElementPresent", new String[]{target,});
-        return Boolean.parseBoolean(test);
+    public boolean verifyWithTargetAndValue(String command, String target, String value) {
+        String result = doCommandWithTargetAndValue(command, target, value);
+        return Boolean.parseBoolean(result);
     }
 
     public void storeTextPresentInGlobal(String target, String value) {
