@@ -50,11 +50,11 @@ public class BrowserFixture extends BaseDoFixture {
     }
 
     public String doCommand(String s1) {
-        doCommandWithTarget(s1, null);
+        return doCommandWithTarget(s1, null);
     }
 
     public String doCommandWithTarget(String s1, String s2) {
-        doCommandWithTargetAndValue(s1, s2, null);
+        return doCommandWithTargetAndValue(s1, s2, null);
     }
 
     public String doCommandWithTargetAndValue(String s1, String s2, String s3) {
@@ -63,11 +63,11 @@ public class BrowserFixture extends BaseDoFixture {
         if (utils.isStarted()) {
             String value = s1 + ":";
             if (s2 == null) {
-                value += utils.cp.getString(s1, new String[]{});
+                value += utils.cp.doCommand(s1, new String[]{});
             } else if (s3 == null) {
-                value += utils.cp.getString(s1, new String[]{s2,});
+                value += utils.cp.doCommand(s1, new String[]{s2,});
             } else {
-                value += utils.cp.getString(s1, new String[]{s2, s3,});
+                value += utils.cp.doCommand(s1, new String[]{s2, s3,});
             }
             utils.debug(s1 + ":" + value);
             return value;
@@ -83,8 +83,12 @@ public class BrowserFixture extends BaseDoFixture {
     }
 
     public boolean verifyWithTargetAndValue(String command, String target, String value) {
-        String result = doCommandWithTargetAndValue(command, target, value);
-        return (result.contains("true"));
+        try {
+            doCommandWithTargetAndValue(command, target, value);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void storeTextPresentInGlobal(String target, String value) {
