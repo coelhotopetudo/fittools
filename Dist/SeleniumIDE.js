@@ -39,7 +39,7 @@ function formatCommands(commands) {
 
         if (commands[i].command.substring(0, 6) == "assert" ||
                 commands[i].command.substring(0, 6) == "verify") {
-            commands[i].command.replace("verify", "assert");
+            commands[i].command = commands[i].command.replace("verify", "assert");
             template = verify;
             template = addSuffix(template, commands[i], doCommandTarget, doCommandValue);
 
