@@ -61,22 +61,23 @@ public class BrowserFixture extends BaseDoFixture {
         if (!utils.isStarted())
             startBrowser();
         if (utils.isStarted()) {
+            String debugString = "C: \"" + s1 + "\"";
             String value = s1 + ":";
             if (s2 == null) {
                 value += utils.cp.doCommand(s1, new String[]{});
             } else if (s3 == null) {
-                value += utils.cp.doCommand(s1, new String[]{s2,});
+                debugString += "T: \"" + s2 + "\"";
+                value += utils.cp.doCommand(s1, new String[]{parse(s2),});
             } else {
-                value += utils.cp.doCommand(s1, new String[]{s2, s3,});
+                debugString += "T: \"" + s2 + "\" V: \"" + s3 + "\"";
+                value += utils.cp.doCommand(s1, new String[]{parse(s2), parse(s3),});
             }
-            utils.debug(s1 + ":" + value);
+            utils.debug(debugString);
+            utils.debug("Result" + value);
             return value;
         }
         return "Selenium Not Running!";
     }
-
-    // todo: Add meaningful debugging to these fixtures
-    // todo: Parse for Global before processing.
 
     public boolean verifyWithTarget(String command, String target) {
         return verifyWithTargetAndValue(command, target, null);
@@ -84,6 +85,7 @@ public class BrowserFixture extends BaseDoFixture {
 
     public boolean verifyWithTargetAndValue(String command, String target, String value) {
         try {
+            utils.debug("Verifying Next Command...");
             doCommandWithTargetAndValue(command, target, value);
             return true;
         } catch (Exception e) {
@@ -91,34 +93,15 @@ public class BrowserFixture extends BaseDoFixture {
         }
     }
 
-    public void storeTextPresentInGlobal(String target, String value) {
-        String text = utils.cp.getString("isTextPresent", new String[]{target,});
-        utils.setGlobal(value, text);
-    }
-
-    public void storePageTitleInGlobal(String value) {
-        String text = utils.cp.getString("getTitle", null);
-        utils.setGlobal(value, text);
-    }
-
-    public void storeValueOfInGlobal(String target, String value) {
-        String text = utils.cp.getString("getValue", new String[]{target,});
-        utils.setGlobal(value, text);
-    }
-
-    public void storeTextInGlobal(String target, String value) {
-        String text = utils.cp.getString("getText", new String[]{target,});
-        utils.setGlobal(value, text);
-    }
-
-    public void storeTableElementAtInGlobal(String target, String value) {
-        String text = utils.cp.getString("getTable", new String[]{target,});
-        utils.setGlobal(value, text);
-    }
-
-    public void storeElementPresentInGlobal(String target, String value) {
-        String text = utils.cp.getString("isElementPresent", new String[] {target,});
-        utils.setGlobal(value, text);
+    public void storeTextInGlobal(String text, String global) throws Exception {
+        if (global.contains(" ")) {
+            String error = "ERROR: Global variable names cannot contain a space";
+            utils.debug(error);
+            throw new Exception(error);
+        } else {
+            utils.setGlobal(global, text);
+            utils.debug("Global stored: " + global + "=\"" + text + "\"");
+        }
     }
 
     public void stopSelenium() {

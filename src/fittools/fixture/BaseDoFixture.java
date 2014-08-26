@@ -29,24 +29,22 @@ public class BaseDoFixture extends DoFixture {
   
   protected FitToolsUtils utils = FitToolsUtils.getInstance(); // for utils variables
 
-  public String parse(String toParse) {
-    utils.debug("Parsing: " + toParse);
-    String[] tokens = toParse.split(SPACE);
-    String toReturn = "";
-    for (String token: tokens) {
-      if (token.indexOf("#[") > -1 && token.indexOf("]") > -1) {
-        utils.log("Global Found: " + token);
-        toReturn += utils.getGlobal(token.substring(2, token.length() - 1)) + SPACE;
-      } else {
-        utils.debug("No global found: " + token);
-        toReturn += token + SPACE;
-      }
+    public String parse(String toParse) {
+        String[] tokens = toParse.split(SPACE);
+        String toReturn = "";
+        for (String token : tokens) {
+            if (token.indexOf("#[") > -1 && token.indexOf("]") > -1) {
+                String value = utils.getGlobal(token.substring(2, token.length() - 1));
+                toReturn += value + SPACE;
+                utils.debug("Global found: " + token + "=\"" + value + "\"");
+            } else {
+                toReturn += token + SPACE;
+            }
+        }
+        return toReturn.trim();
     }
-    utils.debug("Returning: " + toReturn);
-    return toReturn.trim(); 
-  }
 
-  public boolean printGplWarranty() {
+    public boolean printGplWarranty() {
     System.out.println("" + 
                        " ----- GPL Warranty Notice: ------------------------------------------\n " + 
                        " FitTools: FitNesse Plugin for Automation of Web Applications\n" + 
