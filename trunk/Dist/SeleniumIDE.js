@@ -19,13 +19,14 @@
  */
 
 var browserHeader = "!| fittools.fixture.BrowserFixture | ${SEL_HOST} | ${SEL_PORT} | ${BASEURL} | ${BROWSER} |\n";
+var command = "${commands[i].command}";
 var target = "${commands[i].target}";
 var value = "${commands[i].value}";
-var doCommand = "| do command | ${commands[i].command} |";
-var doCommandTarget = " with target | " + target + " |";
-var doCommandValue = " and value | " + value + " |";
-var verify = "| verify | ${commands[i].command} | ";
-var storeValue = " | in global | " + value + " |";
+var doCommand = "| do command | " + command + " |";
+var withTarget = " with target | " + target + " |";
+var andValue = " and value | " + value + " |";
+var assert = "| verify | " + command + " |";
+var storeTextInGlobal = "| store text | " + target + " | in global | " + value + " |";
 
 function format(testCase, name) {
     return formatCommands(testCase.commands);
@@ -37,26 +38,25 @@ function formatCommands(commands) {
 
     for (var i = 0; i < commands.length; i++) {
 
-        if (commands[i].command.substring(0, 6) == "assert" ||
-                commands[i].command.substring(0, 6) == "verify") {
+        if (commands[i].command.substring(0, 6) == "assert" || commands[i].command.substring(0, 6) == "verify") {
             commands[i].command = commands[i].command.replace("verify", "assert");
-            template = verify;
-            template = addSuffix(template, commands[i], doCommandTarget, doCommandValue);
+            template = assert;
+            template = addSuffix(template, commands[i]);
 
         } else if (commands[i].command.substring(0, 5) == "store") {
-            template = prepStore(commands[i].command);
+            template = storeTextInGlobal;
 
         } else {
             template = doCommand;
-            template = addSuffix(template, commands[i], doCommandTarget, doCommandValue);
+            template = addSuffix(template, commands[i]);
         }
 
         if (template != '') {
             var newText = template.replace(/\$\{([a-zA-Z0-9_\.\[\]]+)\}/g,
-                    function(str, p1, offset, s) {
-                        result = eval(p1);
-                        return result != null ? result : '';
-                    });
+                function(str, p1, offset, s) {
+                    result = eval(p1);
+                    return result != null ? result : '';
+                });
 
             commandText = commandText + newText + "\n";
         }
@@ -65,28 +65,13 @@ function formatCommands(commands) {
     return commandText;
 }
 
-function prepStore(command) {
-    var toReturn;
-    switch (command) {
-        case 'storeTextPresent'    : toReturn = "| store text present | ";          break;
-        case 'storeText'           : toReturn = "| store text | ";                  break;
-        case 'storeTitle'          : toReturn = "| store page title in global | ";  break;
-        case 'storeValue'          : toReturn = "| store value of | ";              break;
-        case 'storeTable'          : toReturn = "| store table element at | ";      break;
-        case 'storeElementPresent' : toReturn = "| store element present | ";       break;
-        default: return '';
-    }
-
-    return addSuffix(toReturn, command, target, storeValue);
-}
-
-function addSuffix(template, command, target, value) {
+function addSuffix(template, command) {
     if (command.target != '') {
-        template = template + target;
+        template = template + withTarget;
     }
 
     if (command.value != '') {
-        template = template + value;
+        template = template + andValue;
     }
 
     return template;
