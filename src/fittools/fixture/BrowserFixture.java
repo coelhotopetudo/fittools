@@ -1,19 +1,17 @@
 /* FitTools: FitNesse Plugin for Automation of Web Applications
- * Copyright (C) 2009-2012, Christopher Schalk (www.themaskedcrusader.com)
+ * Copyright (C) 2009-2014, Christopher Schalk (www.themaskedcrusader.com)
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  * Contact the author via email at: christopher.schalk@gmail.com
  */
@@ -66,14 +64,14 @@ public class BrowserFixture extends BaseDoFixture {
             if (s2 == null) {
                 value += utils.cp.doCommand(s1, new String[]{});
             } else if (s3 == null) {
-                debugString += "T: \"" + s2 + "\"";
+                debugString += " T: \"" + s2 + "\"";
                 value += utils.cp.doCommand(s1, new String[]{parse(s2),});
             } else {
-                debugString += "T: \"" + s2 + "\" V: \"" + s3 + "\"";
+                debugString += " T: \"" + s2 + "\" V: \"" + s3 + "\"";
                 value += utils.cp.doCommand(s1, new String[]{parse(s2), parse(s3),});
             }
             utils.debug(debugString);
-            utils.debug("Result" + value);
+            utils.debug("Result: " + value);
             return value;
         }
         return "Selenium Not Running!";
@@ -102,6 +100,11 @@ public class BrowserFixture extends BaseDoFixture {
             utils.setGlobal(global, text);
             utils.debug("Global stored: " + global + "=\"" + text + "\"");
         }
+    }
+
+    public void storeTextAtTargetInGlobal(String target, String global) throws Exception {
+        String text = utils.cp.doCommand("getText", new String[]{target,});
+        storeTextInGlobal(text.substring(text.indexOf(",") + 1), global);
     }
 
     public void stopSelenium() {
