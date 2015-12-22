@@ -1,0 +1,1 @@
+FitNesse is an automated testing platform found at http://fitnesse.org. FitTools is a plug in that adds the ability to automate testing of web applications to FitNesse's already robust testing ability.
